@@ -19,7 +19,7 @@ interface Resource {
 }
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<'overview' | 'roadmap' | 'resources' | 'tools'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'roadmap' | 'resources' | 'tools' | 'glossary'>('overview');
   const [completedDays, setCompletedDays] = useState<Set<number>>(new Set());
 
   const toggleDay = (day: number) => {
@@ -259,6 +259,16 @@ export default function Home() {
                 }`}
               >
                 AI Tools
+              </button>
+              <button
+                onClick={() => setActiveTab('glossary')}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  activeTab === 'glossary'
+                    ? 'bg-purple-500 text-white'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                Glossary
               </button>
             </div>
           </div>
@@ -587,6 +597,269 @@ export default function Home() {
                   <span><strong className="text-white">Join communities</strong> — Reddit, Discord, Stack Overflow</span>
                 </li>
               </ul>
+            </div>
+          </div>
+        )}
+
+        {/* Glossary Tab */}
+        {activeTab === 'glossary' && (
+          <div className="space-y-8">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold text-white mb-4">📚 AI & Tech Glossary</h2>
+              <p className="text-xl text-purple-200">Key terms explained in plain English</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* API */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🔌</span>
+                  <h3 className="text-2xl font-bold text-white">API</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">Application Programming Interface</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  A way for different software programs to talk to each other. Think of it like a waiter in a restaurant — you (the customer) tell the waiter what you want, and the waiter communicates with the kitchen (the API) to get your food.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Example:</strong> When you use ChatGPT, you're using an API. Your app sends a request to OpenAI's servers, and the API sends back a response.
+                  </p>
+                </div>
+              </div>
+
+              {/* Context Window */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🧠</span>
+                  <h3 className="text-2xl font-bold text-white">Context Window</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">How much information an AI can remember at once</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  Like your short-term memory. A larger context window means the AI can "read" and remember more of your conversation at the same time.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Example:</strong> Claude has a 200K token context window — it can read a whole book in one sitting! ChatGPT's is smaller (~128K tokens).
+                  </p>
+                </div>
+              </div>
+
+              {/* Prompt Engineering */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">✍️</span>
+                  <h3 className="text-2xl font-bold text-white">Prompt Engineering</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">The art of talking to AI effectively</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  Writing prompts (questions/instructions) that get the AI to give you exactly what you want. It's like learning to ask the right questions to get the best answers.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Formula:</strong> ROLE + CONTEXT + TASK + FORMAT = Great Results!
+                  </p>
+                </div>
+              </div>
+
+              {/* MCP */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🔗</span>
+                  <h3 className="text-2xl font-bold text-white">MCP</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">Model Context Protocol</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  A universal standard that lets AI assistants connect to external data and tools. Think of it like a USB port for AI — one standard that works with many different tools.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Example:</strong> With MCP, Claude can read your Google Drive, search the web, or access databases — all through one standard connection.
+                  </p>
+                </div>
+              </div>
+
+              {/* LLM */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">📖</span>
+                  <h3 className="text-2xl font-bold text-white">LLM</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">Large Language Model</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  The "brain" behind AI assistants like ChatGPT, Claude, and Gemini. These are trained on massive amounts of text from the internet to understand and generate human-like language.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Popular LLMs:</strong> GPT-4 (OpenAI), Claude 3.5 (Anthropic), Gemini 2.5 (Google)
+                  </p>
+                </div>
+              </div>
+
+              {/* Token */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🪙</span>
+                  <h3 className="text-2xl font-bold text-white">Token</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">The smallest unit of text AI understands</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  Like syllables or pieces of words. Roughly, 1,000 tokens ≈ 750 words (about 1 page of text). AI pricing is often based on token usage.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Example:</strong> "Hello world" = 2 tokens. "Artificial intelligence" = 3 tokens (Ar-ti-fi-cial in-tel-li-gence)
+                  </p>
+                </div>
+              </div>
+
+              {/* Fine-Tuning */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🎯</span>
+                  <h3 className="text-2xl font-bold text-white">Fine-Tuning</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">Custom training for specific tasks</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  Taking a general AI model and teaching it to be really good at one specific thing (like medical diagnosis, legal documents, or song lyrics).
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Example:</strong> A fine-tuned model could be trained exclusively on your song lyrics to match your style perfectly.
+                  </p>
+                </div>
+              </div>
+
+              {/* RAG */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🔍</span>
+                  <h3 className="text-2xl font-bold text-white">RAG</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">Retrieval-Augmented Generation</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  Giving AI access to external information before answering. It's like taking an open-book test — the AI can look up relevant info first, then answer.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Example:</strong> Ask AI about your company — it searches your documents first, then gives an accurate answer based on YOUR data.
+                  </p>
+                </div>
+              </div>
+
+              {/* Temperature */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🌡️</span>
+                  <h3 className="text-2xl font-bold text-white">Temperature</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">How random/creative the AI's responses are</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  Controls predictability. Low temperature = focused, consistent answers. High temperature = creative, varied responses.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Range:</strong> 0.0 (boring, predictable) to 2.0 (wildly creative). Most use 0.7 for balance.
+                  </p>
+                </div>
+              </div>
+
+              {/* Embedding */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">📊</span>
+                  <h3 className="text-2xl font-bold text-white">Embedding</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">Turning text into numbers computers understand</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  Converts words, sentences, or documents into lists of numbers that capture their meaning. Similar concepts get similar numbers.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Use case:</strong> Search engines use embeddings to find similar content, even if keywords don't match.
+                  </p>
+                </div>
+              </div>
+
+              {/* Hallucination */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🤪</span>
+                  <h3 className="text-2xl font-bold text-white">Hallucination</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">When AI confidently says something wrong</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  AI can make stuff up and sound totally sure about it. It's not lying — it's just generating plausible-sounding but incorrect information.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Fix:</strong> Always verify important facts. Use RAG or provide sources to reduce hallucinations.
+                  </p>
+                </div>
+              </div>
+
+              {/* Agent */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">🤖</span>
+                  <h3 className="text-2xl font-bold text-white">Agent</h3>
+                </div>
+                <p className="text-purple-200 mb-3">
+                  <strong className="text-white">AI that can take actions, not just chat</strong>
+                </p>
+                <p className="text-purple-200 text-sm mb-3">
+                  Unlike regular chatbots, agents can use tools, browse the web, send emails, write code, and complete multi-step tasks autonomously.
+                </p>
+                <div className="bg-purple-500/20 rounded-lg p-3">
+                  <p className="text-purple-300 text-sm">
+                    <strong className="text-white">Example:</strong> Bentley (me!) is an AI agent — I can read files, write code, deploy websites, and manage workflows.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Reference */}
+            <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <h3 className="text-2xl font-bold text-white mb-4">⚡ Quick Reference</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                <div>
+                  <div className="text-white font-bold mb-1">1 Token ≈</div>
+                  <div className="text-purple-200">0.75 words</div>
+                </div>
+                <div>
+                  <div className="text-white font-bold mb-1">1,000 Tokens ≈</div>
+                  <div className="text-purple-200">1 page text</div>
+                </div>
+                <div>
+                  <div className="text-white font-bold mb-1">Context Window</div>
+                  <div className="text-purple-200">Short-term memory</div>
+                </div>
+                <div>
+                  <div className="text-white font-bold mb-1">Temperature</div>
+                  <div className="text-purple-200">Creativity level</div>
+                </div>
+              </div>
             </div>
           </div>
         )}
