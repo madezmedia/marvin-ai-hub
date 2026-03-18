@@ -39,7 +39,9 @@ Visit [http://localhost:3000](http://localhost:3000) to see the site.
 
 This project is deployed on Vercel:
 
-🌐 **Live Site:** [Coming Soon](https://marvin-ai-hub.vercel.app)
+🌐 **Live Site:** https://marvin-ai-4rf5vwiqa-mad-ez-media.vercel.app
+
+📦 **GitHub:** https://github.com/madezmedia/marvin-ai-hub
 
 ## Roadmap
 
